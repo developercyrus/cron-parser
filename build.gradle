@@ -1,0 +1,52 @@
+/* 
+============================================================================  
+    Environment
+    1. Eclipse 4.6.1 in Windows 7 64bit
+    2. gradle-3.4.1
+       
+       
+    Setup in Development Machine
+    1. install JDK, and setup JAVA_HOME
+    2. install gradle, and setup gradle\bin in PATH
+
+
+    Config 
+    1. by command
+            gradle eclipse                   # generate library for eclipse
+    2. by eclpse
+            right click project, Gradle > Refresh Gradle Project
+    
+                          
+    Run    
+    1. Open a command prompt in the project path
+    2. gradle clean             
+    3. gradle test 
+    4. gradle build
+    5. gradle run
+    6. gradle clean test build run      
+        
+============================================================================
+*/
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+mainClassName = 'foo.bar.CronExample'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    baseName = 'gradle-hello-world'
+    version =  '1.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile "net.redhogs.cronparser:cron-parser:2.6"
+    testCompile "junit:junit:4.12"
+}
